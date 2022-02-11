@@ -1,0 +1,53 @@
+.header {
+	// background-image: url('../../img/library.jpg');
+	background: linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.2)), url('../../img/library.jpg');
+	height: 250px;
+
+	.header__name {
+		height: 40%;
+		width: 100%;
+		display: table;
+		
+		h1 {
+			display: table-cell;
+			vertical-align: middle;
+			margin: 0;
+			color: white;
+		}
+	}
+
+	.header__search {
+		height: 30%;
+		width: 100%;
+		display: flex;
+   		justify-content: center;
+   		align-items: center;
+
+		input {
+			width: 500px;
+			height: 30px;
+			border: none;
+			border-radius: 5px;
+		}
+	}
+
+	.header__sort {
+		height: 30%;
+		width: 100%;
+		display: flex;
+   		justify-content: center;
+   		align-items: center;
+		label {
+			font-size: 1.2rem;
+			color: white;
+			margin: 0 15px;
+		}
+
+		select {
+			height: 30px;
+			font-size: 1.2rem;
+			border: none;
+			border-radius: 5px;
+		}
+	}
+}
