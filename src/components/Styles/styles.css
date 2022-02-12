@@ -64,4 +64,58 @@
   border: none;
   border-radius: 5px;
 }
+
+.book-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 20px 15%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.card {
+  width: 200px;
+  height: 400px;
+  background: rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 15px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.card .card__cover {
+  margin: 10px auto;
+  height: 60%;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.card .card__cover img {
+  border-radius: 5px;
+}
+
+.card .card__title {
+  margin: 10px auto;
+  height: 35%;
+  width: 90%;
+  overflow: hidden;
+}
+
+.card:hover {
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
 /*# sourceMappingURL=styles.css.map */
