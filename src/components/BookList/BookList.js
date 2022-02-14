@@ -24,13 +24,9 @@ export default class BookList extends Component {
 		fetch("https://www.googleapis.com/books/v1/volumes?q=search+terms&maxResults=30&startIndex=" + this.state.startIndex)
 			.then((response) => response.json())
 			.then((response) => {				
-				// console.log(response)
 				this.setState((prevState) => ({
 					books: [...prevState.books, ...response.items]
 				}))
-				
-				// console.log(this.state.books[0].volumeInfo.title)
-				
 			})
 	}
 

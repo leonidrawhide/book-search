@@ -57,6 +57,28 @@
 	flex-wrap: wrap;
 	padding: 20px 15%;
 	justify-content: space-evenly;
+
+	.book-list__load-more {
+		button {
+			border: none;
+			background: rgba(60, 255, 239, 0.61);
+			width: 120px;
+			height: 80px;
+			font-size: 1.5rem;
+			font-weight: 800;
+			transition: 0.3s;
+			border-radius: 10px;
+
+			&:hover {
+				background: rgb(16, 66, 62);
+				color: white;
+				border-radius: 20px;
+				width: 140px;
+				cursor: pointer;
+				// transform: scale(1.05);
+			}
+		}
+	}
 }
 
 .card {
@@ -91,9 +113,5 @@
 	&:hover {
 		background: rgba(0, 0, 0, 0.5);
 		transform: scale(1.05);
-		// . {
-		// 	background: rgba(0, 0, 0, 0);
-		// 	transform: scale(1.1)
-		// }
 	}
 }
