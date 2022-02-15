@@ -54,10 +54,17 @@
 
 .book-list {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
+	// flex-wrap: wrap;
 	padding: 20px 15%;
-	justify-content: space-evenly;
+	// justify-content: space-evenly;
 
+	.book-list__list {
+		display: flex;
+		flex-wrap: wrap;
+		// padding: 20px 15%;
+		justify-content: space-evenly;
+	}
 	.book-list__load-more {
 		button {
 			border: none;
@@ -75,7 +82,10 @@
 				border-radius: 20px;
 				width: 140px;
 				cursor: pointer;
-				// transform: scale(1.05);
+			}
+
+			&:active {
+				background: rgb(45, 172, 161);
 			}
 		}
 	}

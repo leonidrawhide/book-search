@@ -45,9 +45,11 @@ export default class BookList extends Component {
 		} else {
 			return (
 				<div className='book-list'>
-					{books.map((item) => (
-						<BookListCard book={item} />	
-					))}	
+					<div className='book-list__list'>
+						{books.map((item) => (
+							<BookListCard book={item} />	
+						))}	
+					</div>
 					<div className='book-list__load-more'>
 						<button onClick={this.loadMore}>Load more</button>	
 					</div>			

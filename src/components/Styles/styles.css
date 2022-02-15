@@ -69,9 +69,19 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px 15%;
+}
+
+.book-list .book-list__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding: 20px 15%;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
@@ -95,6 +105,10 @@
   border-radius: 20px;
   width: 140px;
   cursor: pointer;
+}
+
+.book-list .book-list__load-more button:active {
+  background: #2daca1;
 }
 
 .card {
