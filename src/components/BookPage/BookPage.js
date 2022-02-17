@@ -4,7 +4,5 @@ import BookPageClass from './BookPageClass';
 
 export default function BookPage(props) {
 	const {id} = useParams();
-	console.log(id)
-  return (<BookPageClass index={id}/>
-  )
+  	return ( <BookPageClass index={id}/> )
 }

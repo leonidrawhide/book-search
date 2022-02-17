@@ -13,12 +13,10 @@ export default class BookPageClass extends Component {
 	componentDidMount() {
 		fetch(this.state.url)
 			.then((response) => response.json())
-			.then((response) => {		
-				console.log(response)		
+			.then((response) => {				
 				this.setState({
 					bookInfo: response
 				})
-				console.log(this.state)
 			})
 	}
 	render() {
@@ -26,6 +24,8 @@ export default class BookPageClass extends Component {
 		console.log(this.state.bookInfo)
 		if (bookInfo.length == 0) {
 			return <Loading />
+		}else if (bookInfo?.error) {
+			return <div> Error  {bookInfo?.error?.code} {bookInfo?.error?.message}</div>
 		} else {
 			return (
 				<div className='book-page'>
