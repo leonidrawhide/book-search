@@ -13,10 +13,10 @@ export const reducer = (state = initialState, action) => {
             return {...state, books: [...state.books, ...action.data]} 
         case 'CHANGE_SORT':
             console.log(action.data)
-            return {...state, sortBy: action.data.sortBy, category: action.data.category}
+            return {...state, sortBy: action.data.sortBy, category: action.data.category, startIndex: 0}
         case 'SEARCH_QUERY':
             console.log(action.data)
-            return {...state, searchQuery: action.data.searchQuery}
+            return {...state, searchQuery: action.data.searchQuery, startIndex: 0}
         default:
             return state
     }

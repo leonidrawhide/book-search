@@ -43,7 +43,7 @@ export default class BookList extends Component {
 		if (prevState.startIndex !== this.state.startIndex || 
 			prevState.sortBy != this.state.sortBy ||
 			prevState.category != this.state.category ||
-			prevState.searchQuery != this.state.searchQuery) {
+			prevState.searchQuery != this.state.searchQuery ) {
 		  this.loadBooks();
 		}
 	}

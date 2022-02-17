@@ -10,7 +10,9 @@ export default function Header() {
 	const dispatch = useDispatch();
 
 	const changeSort = (e) => {
-		if (e.key === 'Enter') {
+		if (e.key === 'Enter' && 
+			(category != store.getState().category ||
+			sortBy != store.getState().sortBy)) {
 		e.preventDefault();
 		const data = {
 			sortBy: sortBy,
@@ -22,11 +24,16 @@ export default function Header() {
 	}
 
 	const search = (e) => {
-		if (e.key === 'Enter') {
+		if (e.key === 'Enter' && searchQuery != store.getState().searchQuery) {
 			e.preventDefault();
-			const data = {
-				searchQuery: searchQuery
+			// console.log(store.getState())
+			let data
+			if (searchQuery == '') {
+				data = { searchQuery: "search+terms" }
+			} else {
+				data = { searchQuery: searchQuery }
 			}
+			
 			dispatch({type: 'SEARCH_QUERY', data})
 			console.log("dispatched " + data.searchQuery)
 		}
