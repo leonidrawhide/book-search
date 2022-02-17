@@ -38,17 +38,16 @@ export default class BookPageClass extends Component {
 						<div className='book-page__info_wrapper'>
 							<div className='book-page__info_wrapper_cats-auth'>
 								<div className='book-page__info_wrapper_cats-auth_categories'>
-									{bookInfo.volumeInfo.categories.map((item) => (
+									{bookInfo.volumeInfo?.categories?.map((item) => (
 										<p key={item}>{item}</p>
 									))}
 								</div>
 								<div className='book-page__info_wrapper_cats-auth_authors'>
-									{bookInfo.volumeInfo.authors.map((item) => (
+									{bookInfo.volumeInfo?.authors?.map((item) => (
 										<p key={item}>{item}</p>
 									))}
 								</div>
 							</div>
-						
 						<div className='book-page__info_wrapper_description'>
 							<p>{bookInfo.volumeInfo.description}</p>
 						</div>

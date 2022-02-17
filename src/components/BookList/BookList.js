@@ -4,6 +4,7 @@ import BookListFunc from './BookListFunc';
 import BookListCard from '../BookListCard/BookListCard';
 import { store } from '../../app/store';
 import { Link } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 
 export default class BookList extends Component {
 	constructor(props) {
@@ -15,7 +16,7 @@ export default class BookList extends Component {
 			sortBy: store.getState().sortBy,
 			searchQuery: store.getState().searchQuery
 		};
-		console.log(this.state)
+		// console.log(this.state)
 		store.subscribe(() => {
 			this.setState({
 				books: store.getState().books,
@@ -23,20 +24,23 @@ export default class BookList extends Component {
 				sortBy: store.getState().sortBy,
 				searchQuery: store.getState().searchQuery
 			});
-			console.log(this.state)
+			// console.log(this.state)
 		});
 	}
 	
 	componentDidMount() {
-		this.loadBooks()
+			// console.log('here?')	
+		  	this.loadBooks();
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		console.log('update check')
 		if (prevState.startIndex !== this.state.startIndex || 
 			prevState.sortBy != this.state.sortBy ||
 			prevState.category != this.state.category ||
 			prevState.searchQuery != this.state.searchQuery ) {
-		  this.loadBooks();
+			console.log('it is different')	
+		  	this.loadBooks();
 		}
 	}
 
@@ -49,7 +53,7 @@ export default class BookList extends Component {
 		if (sortBy != 'relevance' || category != 'all') {
 			api = '&key=AIzaSyBQroyb0IQgXDI3' + 'vPrUppXCQSu17QE3UEI'
 		}
-		console.log(api)
+		console.log(url)
 		fetch(url)
 			.then((response) => response.json())
 			.then((response) => {		
@@ -70,7 +74,8 @@ export default class BookList extends Component {
 		const {books} = this.state;
 		// console.log(this.state.startIndex)
 		if (books.length == 0) {
-			return <div>Loading</div>
+			console.log("put loading")
+			return <Loading />
 		} else {
 			return (
 				<div className='book-list'>
@@ -78,9 +83,10 @@ export default class BookList extends Component {
 					<div className='book-list__list'>
 						{books.map((item) => (
 							<Link to={{
-								pathname: item.id
+								pathname: item.id,
+								key: item.id
 								}}>
-								<BookListCard book={item} key={item.id} />
+								<BookListCard book={item} />
 							</Link>
 						))}	
 					</div>
