@@ -11,19 +11,18 @@ export default class BookList extends Component {
 			startIndex: 0,
 			books: store.getState().books,
 			category: store.getState().category,
-			sortBy: store.getState().sortBy
+			sortBy: store.getState().sortBy,
+			searchQuery: store.getState().searchQuery
 		};
 		console.log(this.state)
 		store.subscribe(() => {
-			// When state will be updated(in our case, when items will be fetched), 
-			// we will update local component state and force component to rerender 
-			// with new data.
-	  
 			this.setState({
 				books: store.getState().books,
-			category: store.getState().category,
-			sortBy: store.getState().sortBy
+				category: store.getState().category,
+				sortBy: store.getState().sortBy,
+				searchQuery: store.getState().searchQuery
 			});
+			console.log(this.state)
 		  });
 		// store.subscribe(() => {
 		// 	// When state will be updated(in our case, when items will be fetched), 
@@ -41,19 +40,25 @@ export default class BookList extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (prevState.startIndex !== this.state.startIndex) {
+		if (prevState.startIndex !== this.state.startIndex || 
+			prevState.sortBy != this.state.sortBy ||
+			prevState.category != this.state.category ||
+			prevState.searchQuery != this.state.searchQuery) {
 		  this.loadBooks();
 		}
 	}
 
 	loadBooks = () => {
-		const {startIndex, sortBy, category} = this.state
+		const {startIndex, sortBy, category, searchQuery} = this.state
 		let api = ''
+		let url = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&maxResults=30&startIndex=${startIndex}`
+		if (category != 'all') url = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}+subject:${category}&maxResults=30&startIndex=${startIndex}&orderBy=${sortBy}`
+		if (sortBy != 'relevance') url += `&orderBy=${sortBy}`
 		if (sortBy != 'relevance' || category != 'all') {
-			api = '&key=AIzaSyBQroyb0IQgXDI3vPrUppXCQSu17QE3UEI'
+			api = '&key=AIzaSyBQroyb0IQgXDI3' + 'vPrUppXCQSu17QE3UEI'
 		}
 		console.log(api)
-		fetch(`https://www.googleapis.com/books/v1/volumes?q=search+terms&subject:${category}&maxResults=30&startIndex=${startIndex}&orderBy=${sortBy}`)
+		fetch(url)
 			.then((response) => response.json())
 			.then((response) => {		
 				console.log(response)		
@@ -72,7 +77,7 @@ export default class BookList extends Component {
 
 	render() {
 		const {books} = this.state;
-		console.log(this.state.startIndex)
+		// console.log(this.state.startIndex)
 		if (books.length == 0) {
 			return <div>Loading</div>
 		} else {
