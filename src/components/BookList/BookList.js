@@ -42,13 +42,10 @@ export default class BookList extends Component {
 
 	loadBooks = () => {
 		const {startIndex, sortBy, category, searchQuery} = this.state
-		let api = ''
+		let api = '&key=AIzaSyBQroyb0IQgXDI3vPrUppXCQSu17QE3UEI'
 		let url = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&maxResults=30&startIndex=${startIndex}`
 		if (category != 'all') url = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}+subject:${category}&maxResults=30&startIndex=${startIndex}&orderBy=${sortBy}`
 		if (sortBy != 'relevance') url += `&orderBy=${sortBy}`
-		if (sortBy != 'relevance' || category != 'all') {
-			api = '&key=AIzaSyBQroyb0IQgXDI3' + 'vPrUppXCQSu17QE3UEI'
-		}
 		console.log(url + api)
 		fetch(url)
 			.then((response) => response.json())
@@ -69,8 +66,9 @@ export default class BookList extends Component {
 	render() {
 		const {books} = this.state;
 		if (books.length == 0) {
-			console.log("put loading")
 			return <Loading />
+		} else if (books?.error) {
+			return <div> Error  {books?.error?.code} {books?.error?.message}</div>
 		} else {
 			return (
 				<div className='book-list'>

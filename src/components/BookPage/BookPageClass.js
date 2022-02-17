@@ -5,7 +5,7 @@ export default class BookPageClass extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			url: `https://www.googleapis.com/books/v1/volumes/${props.index}`,
+			url: `https://www.googleapis.com/books/v1/volumes/${props.index}?key=AIzaSyBQroyb0IQgXDI3vPrUppXCQSu17QE3UEI`,
 			bookInfo: []
 		}
 	}
