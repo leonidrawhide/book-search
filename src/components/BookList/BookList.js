@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import BookListFunc from './BookListFunc';
-// import { useSelector } from 'react-redux';
 import BookListCard from '../BookListCard/BookListCard';
 import { store } from '../../app/store';
 import { Link } from 'react-router-dom';
@@ -24,12 +22,10 @@ export default class BookList extends Component {
 				sortBy: store.getState().sortBy,
 				searchQuery: store.getState().searchQuery
 			});
-			// console.log(this.state)
 		});
 	}
 	
 	componentDidMount() {
-			// console.log('here?')	
 		  	this.loadBooks();
 	}
 
@@ -53,7 +49,7 @@ export default class BookList extends Component {
 		if (sortBy != 'relevance' || category != 'all') {
 			api = '&key=AIzaSyBQroyb0IQgXDI3' + 'vPrUppXCQSu17QE3UEI'
 		}
-		console.log(url)
+		console.log(url + api)
 		fetch(url)
 			.then((response) => response.json())
 			.then((response) => {		
@@ -72,14 +68,12 @@ export default class BookList extends Component {
 
 	render() {
 		const {books} = this.state;
-		// console.log(this.state.startIndex)
 		if (books.length == 0) {
 			console.log("put loading")
 			return <Loading />
 		} else {
 			return (
 				<div className='book-list'>
-					{/* <BookListFunc books={books}/> */}
 					<div className='book-list__list'>
 						{books.map((item) => (
 							<Link to={{

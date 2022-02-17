@@ -20,33 +20,7 @@ export default function Header() {
 			store.getState().searchQuery == "search+terms" &&
 			category == store.getState().category &&
 			sortBy == store.getState().sortBy)) {
-		// if ((e.key === 'Enter' || e === 'Enter') && 
-		// 	(category != store.getState().category ||
-		// 	sortBy != store.getState().sortBy ||
-		// 	searchQuery != store.getState().searchQuery) && 
-		// 	(!(searchQuery.replaceAll(' ', '') == '' &&
-		// 	store.getState().searchQuery == "search+terms") && (category != store.getState().category ||
-		// 	sortBy != store.getState().sortBy))) {
 			let data
-			// if (searchQuery.replaceAll(' ', '') == '' &&
-			// 	(category != store.getState().category ||
-			// 	sortBy != store.getState().sortBy)) {
-			// 	data = { 
-			// 		searchQuery: "search+terms",
-			// 		sortBy: sortBy,
-			// 		category: category
-			// 	}
-			// 	dispatch({type: 'SEARCH_QUERY', data})
-			// 	dispatch({type: 'CHANGE_SORT', data})
-			// } else if (searchQuery.replaceAll(' ', '') == '') {
-			// 	data = { 
-			// 		searchQuery: searchQuery,
-			// 		sortBy: sortBy,
-			// 		category: category
-			// 	}
-			// 	dispatch({type: 'SEARCH_QUERY', data})
-			// 	dispatch({type: 'CHANGE_SORT', data})
-			// }
 			if (searchQuery.replaceAll(' ', '') == '') {
 				data = { 
 					searchQuery: "search+terms",
@@ -61,10 +35,6 @@ export default function Header() {
 					category: category
 				}
 			}
-			// if (!(searchQuery.replaceAll(' ', '') == '' && 
-			// 	store.getState().searchQuery == "search+terms") && 
-			// 	(category != store.getState().category ||
-			// 	sortBy != store.getState().sortBy))
 			dispatch({type: 'SEARCH_QUERY', data})
 			dispatch({type: 'CHANGE_SORT', data})
 		}
