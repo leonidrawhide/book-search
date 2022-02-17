@@ -109,6 +109,7 @@
 
 		img {
 			border-radius: 5px;
+			overflow: hidden;
 		}
 	}
 
@@ -123,5 +124,6 @@
 	&:hover {
 		background: rgba(0, 0, 0, 0.5);
 		transform: scale(1.05);
+		cursor: pointer;
 	}
 }

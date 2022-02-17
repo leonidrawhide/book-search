@@ -138,6 +138,7 @@
 
 .card .card__cover img {
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .card .card__title {
@@ -151,5 +152,6 @@
   background: rgba(0, 0, 0, 0.5);
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
+  cursor: pointer;
 }
 /*# sourceMappingURL=styles.css.map */
