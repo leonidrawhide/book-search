@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Loading from '../Loading/Loading';
 
 export default class BookPageClass extends Component {
 	constructor(props) {
@@ -24,7 +25,7 @@ export default class BookPageClass extends Component {
 		const {bookInfo} = this.state
 		console.log(this.state.bookInfo)
 		if (bookInfo.length == 0) {
-			return <div>Loading...</div>
+			return <Loading />
 		} else {
 			return (
 				<div className='book-page'>
@@ -38,11 +39,13 @@ export default class BookPageClass extends Component {
 						<div className='book-page__info_wrapper'>
 							<div className='book-page__info_wrapper_cats-auth'>
 								<div className='book-page__info_wrapper_cats-auth_categories'>
+									<h4>Categories</h4>
 									{bookInfo.volumeInfo?.categories?.map((item) => (
 										<p key={item}>{item}</p>
 									))}
 								</div>
 								<div className='book-page__info_wrapper_cats-auth_authors'>
+									<h4>Authors</h4>
 									{bookInfo.volumeInfo?.authors?.map((item) => (
 										<p key={item}>{item}</p>
 									))}
