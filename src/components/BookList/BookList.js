@@ -24,16 +24,7 @@ export default class BookList extends Component {
 				searchQuery: store.getState().searchQuery
 			});
 			console.log(this.state)
-		  });
-		// store.subscribe(() => {
-		// 	// When state will be updated(in our case, when items will be fetched), 
-		// 	// we will update local component state and force component to rerender 
-		// 	// with new data.
-	  
-		// 	this.setState({
-		// 		books: store.getState().books
-		// 	});
-		//   });
+		});
 	}
 	
 	componentDidMount() {
@@ -74,7 +65,6 @@ export default class BookList extends Component {
 			startIndex: prevState.startIndex + 30
 		}));
 	}
-	
 
 	render() {
 		const {books} = this.state;

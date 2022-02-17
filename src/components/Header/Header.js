@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../Styles/styles.css'
 import { store } from '../../app/store';
 import { Outlet } from 'react-router-dom';
+import searchLogo from '../../img/search-icon.png';
 
 export default function Header() {
 	const [sortBy, setSortBy] = useState('relevance');
@@ -10,52 +11,45 @@ export default function Header() {
 	const [searchQuery, setSearchQuery] = useState('');
 	const dispatch = useDispatch();
 
-	const changeSort = (e) => {
-		if (e.key === 'Enter' && 
-			(category != store.getState().category ||
-			sortBy != store.getState().sortBy)) {
-			e.preventDefault();
-			const data = {
-				sortBy: sortBy,
-				category: category
-			}
-			dispatch({type: 'CHANGE_SORT', data})
-			console.log("dispatched " + data.sortBy + " " + data.category)
-		}
-	}
+	// const changeSort = (e) => {
+	// 	if (e.key === 'Enter' && 
+	// 		(category != store.getState().category ||
+	// 		sortBy != store.getState().sortBy)) {
+	// 		e.preventDefault();
+	// 		const data = {
+	// 			sortBy: sortBy,
+	// 			category: category
+	// 		}
+	// 		dispatch({type: 'CHANGE_SORT', data})
+	// 		console.log("dispatched " + data.sortBy + " " + data.category)
+	// 	}
+	// }
 
 	const search = (e) => {
-		if (e.key === 'Enter' && searchQuery != store.getState().searchQuery) {
-			e.preventDefault();
-
+		if ((e.key === 'Enter' || e === 'Enter') && 
+			(category != store.getState().category ||
+			sortBy != store.getState().sortBy ||
+			searchQuery != store.getState().searchQuery)) {
 			let data
 			if (searchQuery == '') {
-				data = { searchQuery: "search+terms" }
+				data = { 
+					searchQuery: "search+terms",
+					sortBy: sortBy,
+					category: category
+				}
 			} else {
-				data = { searchQuery: searchQuery }
+				data = { 
+					searchQuery: searchQuery,
+					sortBy: sortBy,
+					category: category
+				}
 			}
 			
 			dispatch({type: 'SEARCH_QUERY', data})
-			console.log("dispatched " + data.searchQuery)
+			dispatch({type: 'CHANGE_SORT', data})
 		}
 		
 	}
-
-	// const handleSortChange = function(e){
-	// 	const val = e.target.value;
-	// 	e.preventDefault();
-	// 	this.setState(() => ({
-	// 		sortBy: val,
-	// 	}));
-	// }
-
-	// const handleCategoryChange = function(e){
-	// 	const val = e.target.value;
-	// 	e.preventDefault();
-	// 	this.setState(() => ({
-	// 	  category: val,
-	// 	}));
-	// } 
 
   	return (
 		<div>
@@ -65,8 +59,16 @@ export default function Header() {
 				</div>
 				<div className='header__search'>
 					<input type='text' value={searchQuery} onChange={e=>setSearchQuery(e.target.value)} onKeyDown={search}/>
+					<button onClick={() => {
+						const e = {
+							key: 'Enter'
+						}
+						search(e)
+					}}>
+						<img src={searchLogo} alt="Поиск" />
+					</button>
 				</div>
-				<div className='header__sort' onKeyDown={changeSort}>
+				<div className='header__sort' onKeyDown={search}>
 					<label htmlFor="category">Категории</label>
 					<select id="category" name="category" value={category} onChange={e=>setCategory(e.target.value)}>
 						<option value='all'>all</option>
