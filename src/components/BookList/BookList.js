@@ -3,6 +3,7 @@ import BookListFunc from './BookListFunc';
 // import { useSelector } from 'react-redux';
 import BookListCard from '../BookListCard/BookListCard';
 import { store } from '../../app/store';
+import { Link } from 'react-router-dom';
 
 export default class BookList extends Component {
 	constructor(props) {
@@ -86,7 +87,11 @@ export default class BookList extends Component {
 					{/* <BookListFunc books={books}/> */}
 					<div className='book-list__list'>
 						{books.map((item) => (
-							<BookListCard book={item} />	
+							<Link to={{
+								pathname: item.id
+								}}>
+								<BookListCard book={item} key={item.id} />
+							</Link>
 						))}	
 					</div>
 					<div className='book-list__load-more'>

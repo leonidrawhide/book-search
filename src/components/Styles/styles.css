@@ -111,6 +111,11 @@
   background: #2daca1;
 }
 
+.book-list a {
+  text-decoration: none;
+  color: black;
+}
+
 .card {
   width: 200px;
   height: 400px;
