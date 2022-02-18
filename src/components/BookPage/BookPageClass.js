@@ -21,7 +21,6 @@ export default class BookPageClass extends Component {
 	}
 	render() {
 		const {bookInfo} = this.state
-		console.log(this.state.bookInfo)
 		if (bookInfo.length == 0) {
 			return <Loading />
 		}else if (bookInfo?.error) {

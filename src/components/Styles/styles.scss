@@ -111,26 +111,34 @@
 		
 	}
 	.book-list__load-more {
+		margin-top: 30px;
+		// width: 280px;
 		button {
 			border: none;
-			background: rgba(60, 255, 239, 0.61);
-			width: 120px;
-			height: 80px;
+			background: rgb(179, 179, 179);
+			width: 100%;
+			max-width: 220px;
+			height: 60px;
 			font-size: 1.5rem;
-			font-weight: 800;
+			font-weight: 500;
 			transition: 0.3s;
 			border-radius: 10px;
 
 			&:hover {
-				background: rgb(16, 66, 62);
+				background: rgb(94, 94, 94);
 				color: white;
 				border-radius: 20px;
-				width: 140px;
+				width: calc(100% + 20px);
+				
 				cursor: pointer;
+
+				@media (max-width: 320px) {
+					margin-left: -10px;
+				}
 			}
 
 			&:active {
-				background: rgb(45, 172, 161);
+				background: rgb(255, 255, 255);
 			}
 		}
 	}
@@ -162,6 +170,15 @@
 			border-radius: 5px;
 			overflow: hidden;
 		}
+
+		.card__cover_undefined {
+			background-color: rgb(190, 190, 190);
+			height: 100%;
+			width: 90%;
+			border-radius: 5px;
+			overflow: hidden;
+			transition: 0.2s;
+		}
 	}
 
 	.card__category {
@@ -170,6 +187,7 @@
 		text-align: left;
 		height: 20px;
 		overflow: hidden;
+		transition: 0.2s;
 	}
 
 	.card__title {
@@ -185,12 +203,25 @@
 		text-align: left;
 		height: 20px;
 		overflow: hidden;
+		transition: 0.2s;
 	}
 
 	&:hover {
 		background: rgba(0, 0, 0, 0.5);
 		transform: scale(1.05);
 		cursor: pointer;
+
+		.card__cover_undefined {
+			background-color: rgb(136, 136, 136);
+		}
+
+		.card__author {
+			color: white;
+		}
+
+		.card__category {
+			color: white;
+		}
 	}
 }
 

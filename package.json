@@ -1,6 +1,6 @@
 {
   "name": "book-search-app",
-  "version": "0.1.0",
+  "version": "1.1",
   "private": true,
   "homepage": "https://leonidrawhide.github.io/book-search",
   "dependencies": {

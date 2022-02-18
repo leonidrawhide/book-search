@@ -14,7 +14,6 @@ export default class BookList extends Component {
 			sortBy: store.getState().sortBy,
 			searchQuery: store.getState().searchQuery
 		};
-		// console.log(this.state)
 		store.subscribe(() => {
 			this.setState({
 				books: store.getState().books,
@@ -30,7 +29,6 @@ export default class BookList extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		console.log('update check')
 		if (prevState.startIndex !== this.state.startIndex || 
 			prevState.sortBy != this.state.sortBy ||
 			prevState.category != this.state.category ||
@@ -46,11 +44,9 @@ export default class BookList extends Component {
 		let url = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&maxResults=30&startIndex=${startIndex}`
 		if (category != 'all') url = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}+subject:${category}&maxResults=30&startIndex=${startIndex}&orderBy=${sortBy}`
 		if (sortBy != 'relevance') url += `&orderBy=${sortBy}`
-		console.log(url + api)
-		fetch(url)
+		fetch(url + api)
 			.then((response) => response.json())
-			.then((response) => {		
-				console.log(response)		
+			.then((response) => {			
 				this.setState((prevState) => ({
 					books: [...prevState.books, ...response.items]
 				}))
